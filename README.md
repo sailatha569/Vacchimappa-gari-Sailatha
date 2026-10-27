@@ -3,7 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# Website to scrape - Books to Scrape (public site allowed for scraping)
+# Website to scrape - Books to Scrape (public site allow
+ed for scraping)
 url = "http://books.toscrape.com/catalogue/page-1.html"
 headers = {"User-Agent": "Mozilla/5.0"}
 
@@ -22,3 +23,4 @@ df = pd.DataFrame(books, columns=['Title', 'Price', 'Rating'])
 df.to_csv('CodeAlpha_WebScraped_Dataset.csv', index=False)
 print("Dataset Created Successfully!")
 print(df.head())
+__________________________________________________________
