@@ -65,3 +65,27 @@ plt.show()
 
 print("All 3 dashboards created - Ready for submission!")
 ____________________________________________________________
+import pandas as pd
+from textblob import TextBlob
+
+# Sample Amazon reviews data
+reviews = [
+    "I love this product, it is amazing!",
+    "Worst purchase ever, totally waste of money.",
+    "Product is okay, not bad but not great.",
+    "Excellent quality and fast delivery!",
+    "Very disappointing, broke in 2 days."
+]
+
+def get_sentiment(text):
+    polarity = TextBlob(text).sentiment.polarity
+    if polarity > 0: return 'Positive'
+    elif polarity < 0: return 'Negative'
+    else: return 'Neutral'
+
+df = pd.DataFrame(reviews, columns=['Review'])
+df['Sentiment'] = df['Review'].apply(get_sentiment)
+df['Polarity'] = df['Review'].apply(lambda x: TextBlob(x).sentiment.polarity)
+
+df.to_csv('CodeAlpha_Sentiment_Analysis.csv', index=False)
+print(df)
